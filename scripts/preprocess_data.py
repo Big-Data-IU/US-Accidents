@@ -1,3 +1,5 @@
+"""Clean and profile the Stage 1 US Accidents dataset."""
+
 from pathlib import Path
 
 import pandas as pd
@@ -29,6 +31,7 @@ BOOL_COLUMNS = [
 
 
 def clean_chunk(chunk: pd.DataFrame) -> pd.DataFrame:
+    """Apply lightweight cleaning rules to one dataframe chunk."""
     chunk = chunk.applymap(lambda x: x.strip() if isinstance(x, str) else x)
 
     for column in chunk.columns:
@@ -53,6 +56,7 @@ def clean_chunk(chunk: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
+    """Generate a cleaned CSV and a simple data quality report."""
     if not RAW_FILE.exists():
         raise FileNotFoundError(f"Raw dataset not found: {RAW_FILE}")
 

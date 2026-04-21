@@ -1,3 +1,5 @@
+"""Build PostgreSQL objects and load Stage 1 data."""
+
 import os
 from pathlib import Path
 from pprint import pprint
@@ -13,17 +15,20 @@ PASSWORD_FILE = Path(os.getenv("PASSWORD_FILE", ROOT_DIR / "secrets" / ".psql.pa
 
 
 def getenv_or_default(name: str, default: str) -> str:
+    """Return env var value or fallback to default."""
     value = os.getenv(name)
     return value if value else default
 
 
 def read_password() -> str:
+    """Read PostgreSQL password from secrets file."""
     if not PASSWORD_FILE.exists():
         raise FileNotFoundError(f"Missing password file: {PASSWORD_FILE}")
     return PASSWORD_FILE.read_text(encoding="utf-8").strip()
 
 
 def build_connection_string(password: str) -> str:
+    """Build psycopg2 connection string from environment settings."""
     team_id = getenv_or_default("TEAM_ID", "0")
     db_host = getenv_or_default("DB_HOST", "hadoop-04.uni.innopolis.ru")
     db_port = getenv_or_default("DB_PORT", "5432")
@@ -36,10 +41,12 @@ def build_connection_string(password: str) -> str:
 
 
 def run_sql_file(cursor: "psycopg2.extensions.cursor", sql_path: Path) -> None:
+    """Execute all SQL statements from one file."""
     cursor.execute(sql_path.read_text(encoding="utf-8"))
 
 
 def load_data(cursor: "psycopg2.extensions.cursor") -> None:
+    """Bulk-load accidents CSV into PostgreSQL using COPY."""
     import_sql = SQL_DIR / "import_data.sql"
     copy_command = import_sql.read_text(encoding="utf-8").strip()
     data_file = CLEAN_DATA_FILE if CLEAN_DATA_FILE.exists() else RAW_DATA_FILE
@@ -48,6 +55,7 @@ def load_data(cursor: "psycopg2.extensions.cursor") -> None:
 
 
 def run_validation(cursor: "psycopg2.extensions.cursor") -> None:
+    """Execute validation queries and print their result rows."""
     test_sql = (SQL_DIR / "test_database.sql").read_text(encoding="utf-8")
     for chunk in test_sql.split(";"):
         lines = []
@@ -64,6 +72,7 @@ def run_validation(cursor: "psycopg2.extensions.cursor") -> None:
 
 
 def main() -> None:
+    """Run full Stage 1 database build and validation flow."""
     if not RAW_DATA_FILE.exists():
         raise FileNotFoundError(f"Dataset file does not exist: {RAW_DATA_FILE}")
 
