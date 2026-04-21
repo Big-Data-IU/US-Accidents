@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS us_accidents (
     end_lat DOUBLE PRECISION,
     end_lng DOUBLE PRECISION,
     distance_mi DOUBLE PRECISION,
-    description TEXT NOT NULL,
+    description TEXT,
     street TEXT,
     city TEXT,
     county TEXT,

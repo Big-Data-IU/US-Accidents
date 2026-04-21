@@ -5,6 +5,9 @@ set -euo pipefail
 echo "[Stage 1] Collecting dataset"
 bash scripts/data_collection.sh
 
+echo "[Stage 1] Cleaning and preprocessing dataset"
+bash scripts/preprocess.sh
+
 echo "[Stage 1] Building PostgreSQL database"
 bash scripts/data_storage.sh
 

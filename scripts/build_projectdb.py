@@ -7,7 +7,8 @@ import psycopg2
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 SQL_DIR = ROOT_DIR / "sql"
-DATA_FILE = ROOT_DIR / "data" / "US_Accidents_March23.csv"
+RAW_DATA_FILE = ROOT_DIR / "data" / "US_Accidents_March23.csv"
+CLEAN_DATA_FILE = ROOT_DIR / "data" / "US_Accidents_March23_clean.csv"
 PASSWORD_FILE = Path(os.getenv("PASSWORD_FILE", ROOT_DIR / "secrets" / ".psql.pass"))
 
 
@@ -41,7 +42,8 @@ def run_sql_file(cursor: "psycopg2.extensions.cursor", sql_path: Path) -> None:
 def load_data(cursor: "psycopg2.extensions.cursor") -> None:
     import_sql = SQL_DIR / "import_data.sql"
     copy_command = import_sql.read_text(encoding="utf-8").strip()
-    with DATA_FILE.open("r", encoding="utf-8") as csv_file:
+    data_file = CLEAN_DATA_FILE if CLEAN_DATA_FILE.exists() else RAW_DATA_FILE
+    with data_file.open("r", encoding="utf-8") as csv_file:
         cursor.copy_expert(copy_command, csv_file)
 
 
@@ -62,8 +64,8 @@ def run_validation(cursor: "psycopg2.extensions.cursor") -> None:
 
 
 def main() -> None:
-    if not DATA_FILE.exists():
-        raise FileNotFoundError(f"Dataset file does not exist: {DATA_FILE}")
+    if not RAW_DATA_FILE.exists():
+        raise FileNotFoundError(f"Dataset file does not exist: {RAW_DATA_FILE}")
 
     password = read_password()
     conn_string = build_connection_string(password)
