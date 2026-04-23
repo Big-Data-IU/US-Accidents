@@ -1,4 +1,4 @@
--- Q2: average accident severity and count by wind speed range.
+-- Q2: Average accident severity and count by wind speed range.
 USE ${hiveconf:DB_NAME};
 
 DROP TABLE IF EXISTS q2_results;
@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS q2_results;
 CREATE TABLE q2_results AS
 SELECT
   bucket,
-  COUNT(*)                AS accident_count,
-  ROUND(AVG(severity), 2) AS avg_severity
+  COUNT(*)                                                                 AS accident_count,
+  ROUND(COUNT(CASE WHEN severity >= 3 THEN 1 END) * 100.0 / COUNT(*), 2) AS high_severity_pct
 FROM (
   SELECT
     CASE

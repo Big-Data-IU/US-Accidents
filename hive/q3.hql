@@ -1,4 +1,4 @@
--- Q3: average accident severity and count by visibility range.
+-- Q3: High-severity accident rate by visibility range.
 USE ${hiveconf:DB_NAME};
 
 DROP TABLE IF EXISTS q3_results;
@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS q3_results;
 CREATE TABLE q3_results AS
 SELECT
   bucket,
-  COUNT(*)                AS accident_count,
-  ROUND(AVG(severity), 2) AS avg_severity
+  COUNT(*)                                                                 AS accident_count,
+  ROUND(COUNT(CASE WHEN severity >= 3 THEN 1 END) * 100.0 / COUNT(*), 2) AS high_severity_pct
 FROM (
   SELECT
     CASE
