@@ -1,9 +1,7 @@
 -- Q2: Average accident severity and count by wind speed range.
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q2_results;
-
-CREATE TABLE q2_results AS
+CREATE TABLE IF NOT EXISTS q2_out AS
 SELECT
   bucket,
   COUNT(*)                                                                 AS accident_count,

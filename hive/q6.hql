@@ -1,9 +1,7 @@
 -- Q6: Top 15 weather conditions during accidents with high severity rates.
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q6_results;
-
-CREATE TABLE q6_results AS
+CREATE TABLE IF NOT EXISTS q6_out AS
 SELECT
   weather_condition,
   COUNT(*)                                                                 AS accident_count,

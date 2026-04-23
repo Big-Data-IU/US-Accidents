@@ -63,30 +63,30 @@ run_hql hive/drop_unpartitioned.hql
 
 echo "==> EDA Q1: Road feature impact on accidents"
 run_hql hive/q1.hql
-export_csv q1_results output/q1.csv
+export_csv q1_out output/q1.csv
 
 echo "==> EDA Q2: Accidents by wind speed range"
 run_hql hive/q2.hql
-export_csv q2_results output/q2.csv
+export_csv q2_out output/q2.csv
 
 echo "==> EDA Q3: Accidents by visibility range"
 run_hql hive/q3.hql
-export_csv q3_results output/q3.csv
+export_csv q3_out output/q3.csv
 
 echo "==> EDA Q4: Top 10 accident cities"
 run_hql hive/q4.hql
-export_csv q4_results output/q4.csv
+export_csv q4_out output/q4.csv
 
 echo "==> EDA Q5: Accidents by hour of day"
 run_hql hive/q5.hql
-export_csv q5_results output/q5.csv
+export_csv q5_out output/q5.csv
 
 echo "==> EDA Q6: Top weather conditions"
 run_hql hive/q6.hql
-export_csv q6_results output/q6.csv
+export_csv q6_out output/q6.csv
 
 echo "==> EDA Q7: Severity distribution"
 run_hql hive/q7.hql
-export_csv q7_results output/q7.csv
+export_csv q7_out output/q7.csv
 
 echo "Stage 2 complete. CSV results are in output/."

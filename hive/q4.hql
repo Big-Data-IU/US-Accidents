@@ -1,9 +1,7 @@
 -- Q4: top 10 cities by accident count
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q4_results;
-
-CREATE TABLE q4_results AS
+CREATE TABLE IF NOT EXISTS q4_out AS
 SELECT
   city,
   state,

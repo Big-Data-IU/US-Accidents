@@ -1,9 +1,7 @@
 -- Q3: High-severity accident rate by visibility range.
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q3_results;
-
-CREATE TABLE q3_results AS
+CREATE TABLE IF NOT EXISTS q3_out AS
 SELECT
   bucket,
   COUNT(*)                                                                 AS accident_count,

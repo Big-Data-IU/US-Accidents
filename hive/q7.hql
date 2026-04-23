@@ -1,9 +1,7 @@
 -- Q7: severity distribution with percentage share
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q7_results;
-
-CREATE TABLE q7_results AS
+CREATE TABLE IF NOT EXISTS q7_out AS
 SELECT
   severity,
   COUNT(*)                                                AS accident_count,

@@ -1,9 +1,7 @@
 -- Q1: Accident count and average severity per road feature.
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q1_results;
-
-CREATE TABLE q1_results AS
+CREATE TABLE IF NOT EXISTS q1_out AS
 SELECT
   t.road_feature,
   COUNT(*)                                                                    AS accident_count,

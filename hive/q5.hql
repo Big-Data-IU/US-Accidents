@@ -1,9 +1,7 @@
 -- Q5: accident count by hour of day
 USE ${hiveconf:DB_NAME};
 
-DROP TABLE IF EXISTS q5_results;
-
-CREATE TABLE q5_results AS
+CREATE TABLE IF NOT EXISTS q5_out AS
 SELECT
   HOUR(start_time) AS hour_of_day,
   COUNT(*)         AS accident_count
