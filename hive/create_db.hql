@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS ${hiveconf:DB_NAME}
+  LOCATION '${hiveconf:HIVE_WAREHOUSE_LOC}';
+
+USE ${hiveconf:DB_NAME};
