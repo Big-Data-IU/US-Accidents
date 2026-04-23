@@ -35,12 +35,10 @@ export_csv() {
 
 mkdir -p output
 
-echo "==> Copying AVSC schema file to HDFS avsc folder"
+echo "==> Uploading AVSC schema file to HDFS"
 hdfs dfs -mkdir -p "project/warehouse/avsc"
 hdfs dfs -rm -f "project/warehouse/avsc/us_accidents.avsc" 2>/dev/null || true
-hdfs dfs -cp \
-  "project/warehouse/us_accidents/us_accidents.avsc" \
-  "project/warehouse/avsc/us_accidents.avsc"
+hdfs dfs -put "output/sqoop_generated/us_accidents.avsc" "project/warehouse/avsc/us_accidents.avsc"
 
 echo "==> Creating Hive database"
 run_hql hive/create_db.hql
