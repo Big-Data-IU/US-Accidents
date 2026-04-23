@@ -5,7 +5,7 @@ set -euo pipefail
 HIVE_DB_NAME="${HIVE_DB_NAME:-team31_projectdb}"
 HIVE_HOST="${HIVE_HOST:-hadoop-03.uni.innopolis.ru}"
 HIVE_PORT="${HIVE_PORT:-10001}"
-HIVE_PASSWORD="$(head -n 1 secrets/.hive.pass)"
+HIVE_PASSWORD="$(head -n 1 secrets/hive.pass)"
 
 HDFS_USER_DIR="/user/team31"
 SQOOP_WAREHOUSE="${HDFS_USER_DIR}/project/warehouse"
