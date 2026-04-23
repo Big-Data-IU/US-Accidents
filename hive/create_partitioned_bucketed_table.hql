@@ -2,6 +2,10 @@ USE ${hiveconf:DB_NAME};
 
 SET hive.exec.dynamic.partition=true;
 SET hive.exec.dynamic.partition.mode=nonstrict;
+SET hive.optimize.sort.dynamic.partition=true;
+SET mapreduce.job.reduces=1;
+SET hive.exec.orc.default.stripe.size=33554432;
+SET hive.exec.orc.default.buffer.size=65536;
 
 -- partitioned by state, bucketed by severity (4 buckets for the 4 severity levels)
 CREATE EXTERNAL TABLE IF NOT EXISTS us_accidents_part_buck (
@@ -55,7 +59,7 @@ PARTITIONED BY (state STRING)
 CLUSTERED BY (severity) INTO 4 BUCKETS
 STORED AS ORC
 LOCATION '${hiveconf:HIVE_WAREHOUSE_LOC}/us_accidents_part_buck'
-TBLPROPERTIES ('orc.compress'='SNAPPY');
+TBLPROPERTIES ('orc.compress'='NONE');
 
 -- populate from the unpartitioned external table partitioned by state key
 INSERT OVERWRITE TABLE us_accidents_part_buck PARTITION (state)
