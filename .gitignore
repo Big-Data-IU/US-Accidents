@@ -173,6 +173,45 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# LaTeX / latexmk auxiliary files (*.tex и *.pdf остаются видимыми для git)
+*.aux
+*.bbl
+*.bcf
+*-blx.aux
+*-blx.bib
+*.blg
+*.cb
+*.cb2
+*.fdb_latexmk
+*.fff
+*.fls
+*.fmt
+*.fot
+*.lof
+*.lot
+*.maf
+*.mtc*
+*.mw
+*.nav
+*.out
+*.pdfsync
+*.run.xml
+*.snm
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.tdo
+*.tfm
+*.toc
+*.ttt
+*.vrb
+*.xdv
+.*.lb
+
+# HTML
+*.html
+
 # Project data artifacts
 data/*.csv
 output/*.avsc

@@ -1,0 +1,135 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+% Page numbers higher: extra bottom margin; includefoot reserves space for footer
+\usepackage[a4paper,left=12mm,right=12mm,top=12mm,bottom=10mm,includefoot]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tabularx}
+
+\setcounter{secnumdepth}{-1}
+
+\newcommand{\email}[1]{\texttt{\detokenize{#1}}}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{2.5cm}
+
+  {\huge\bfseries Predicting the severity of\\[0.25em] traffic accidents\par}
+  \vspace{1.5em}
+  {\large Big Data --- Final Project\par}
+  \vspace{0.45em}
+  {\normalsize Innopolis University\par}
+
+  \vspace{2.8em}
+  {\LARGE\bfseries Team 31\par}
+
+  \vspace{2.2em}
+  {\setlength{\tabcolsep}{0pt}%
+  \begin{tabular}{c}
+    \textbf{Anna Belyakova} \quad \email{a.belyakova@innopolis.university} \\[0.9em]
+    \textbf{Sofia Pushkareva} \quad \email{s.pushkareva@innopolis.university} \\[0.9em]
+    \textbf{Daria Alexandrova} \quad \email{d.alexandrova@innopolis.university} \\[0.9em]
+    \textbf{Aisylu Fattakhova} \quad \email{a.fattakhova@innopolis.university} \\
+  \end{tabular}}
+
+  \vfill
+\end{titlepage}
+
+\chapter*{Introduction}
+\section*{Business objectives}
+
+\chapter*{Data Description}
+\section*{Data Characteristics}
+
+\chapter*{Architecture of data pipeline}
+\section*{The input and the output for each stage}
+
+\chapter*{Data preparation}
+\section*{ER diagram}
+\section*{Some samples from the database}
+\section*{Creating Hive tables and preparing the data for analysis}
+
+\chapter*{Data analysis}
+\section*{Analysis results}
+\section*{Charts}
+\section*{Interpretation}
+
+\chapter*{ML modeling}
+\section*{Feature extraction and data preprocessing}
+\section*{Training and fine-tuning}
+\section*{Evaluation}
+
+\chapter*{Data presentation}
+\section*{The description of the dashboard}
+\section*{Description of each chart}
+\section*{Your findings}
+
+\chapter*{Conclusion}
+\section*{Summary of the report}
+
+\chapter*{Reflections on own work}
+\section*{Challenges and difficulties}
+\section*{Recommendations}
+
+\section*{The table of contributions of each team member}
+
+\vspace{0.8em}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.1cm} >{\raggedright\arraybackslash}X cccc >{\raggedright\arraybackslash}p{2cm} c@{}}
+  \toprule
+  \makecell{\textbf{Project}\\\textbf{tasks}}
+    & \textbf{Task description}
+    & \makecell{\textbf{Anna}\\\textbf{Belyakova}}
+    & \makecell{\textbf{Sofia}\\\textbf{Pushkareva}}
+    & \makecell{\textbf{Daria}\\\textbf{Alexandrova}}
+    & \makecell{\textbf{Aisylu}\\\textbf{Fattakhova}}
+    & \textbf{Deliverables}
+    & \makecell{\textbf{Average}\\\textbf{hours}\\\textbf{spent}} \\
+  \midrule
+  Data extraction
+    & Collect the US Accidents dataset and stage a representative sample for the pipeline.
+    & 25\% & 25\% & 25\% & 25\%
+    & \texttt{US\_Accidents\_March23.csv}
+    & --- \\
+  Data cleaning \& profiling
+    & Chunked preprocessing; deduplication; coordinate and boolean cleanup; quality report.
+    & 25\% & 25\% & 25\% & 25\%
+    & \texttt{*\_clean.csv}; \texttt{output/data\_quality\_stage1.txt}
+    & --- \\
+  PostgreSQL \& Sqoop
+    & DDL, bulk load, export to HDFS/Avro for Hive ingestion.
+    & 25\% & 25\% & 25\% & 25\%
+    & \texttt{sql/*.sql}; HDFS warehouse paths
+    & --- \\
+  Hive \& EDA
+    & External/partitioned tables; HiveQL analytics; CSV exports for dashboard.
+    & 25\% & 25\% & 25\% & 25\%
+    & \texttt{hive/*.hql}; \texttt{output/q*.csv}
+    & --- \\
+  Spark ML
+    & Feature pipeline; train/tune RF, LinearSVC, Naive Bayes; cross-validation.
+    & 25\% & 25\% & 25\% & 25\%
+    & \texttt{models/}; evaluation outputs
+    & --- \\
+  Dashboard \& presentation
+    & Superset/Streamlit dashboard; defence slides and storytelling.
+    & 25\% & 25\% & 25\% & 25\%
+    & Dashboard URL; demo assets
+    & --- \\
+  Reporting
+    & Write-up of pipeline, results, and reflections (\texttt{report/main.tex}).
+    & 25\% & 25\% & 25\% & 25\%
+    & This report (PDF)
+    & --- \\
+  \bottomrule
+\end{tabularx}
+\normalsize
+
+\end{document}
