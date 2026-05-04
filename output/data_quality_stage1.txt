@@ -1,0 +1,7 @@
+Stage 1 data quality summary
+Raw rows: 7728394
+Clean rows: 7728394
+Removed rows: 0
+NULL Description: 5
+NULL City: 253
+NULL Weather_Condition: 173459

@@ -1,0 +1,283 @@
+{
+  "type" : "record",
+  "name" : "us_accidents",
+  "doc" : "Sqoop import of us_accidents",
+  "fields" : [ {
+    "name" : "id",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "id",
+    "sqlType" : "12"
+  }, {
+    "name" : "source",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "source",
+    "sqlType" : "12"
+  }, {
+    "name" : "severity",
+    "type" : [ "null", "int" ],
+    "default" : null,
+    "columnName" : "severity",
+    "sqlType" : "5"
+  }, {
+    "name" : "start_time",
+    "type" : [ "null", "long" ],
+    "default" : null,
+    "columnName" : "start_time",
+    "sqlType" : "93"
+  }, {
+    "name" : "end_time",
+    "type" : [ "null", "long" ],
+    "default" : null,
+    "columnName" : "end_time",
+    "sqlType" : "93"
+  }, {
+    "name" : "start_lat",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "start_lat",
+    "sqlType" : "8"
+  }, {
+    "name" : "start_lng",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "start_lng",
+    "sqlType" : "8"
+  }, {
+    "name" : "end_lat",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "end_lat",
+    "sqlType" : "8"
+  }, {
+    "name" : "end_lng",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "end_lng",
+    "sqlType" : "8"
+  }, {
+    "name" : "distance_mi",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "distance_mi",
+    "sqlType" : "8"
+  }, {
+    "name" : "description",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "description",
+    "sqlType" : "12"
+  }, {
+    "name" : "street",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "street",
+    "sqlType" : "12"
+  }, {
+    "name" : "city",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "city",
+    "sqlType" : "12"
+  }, {
+    "name" : "county",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "county",
+    "sqlType" : "12"
+  }, {
+    "name" : "state",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "state",
+    "sqlType" : "12"
+  }, {
+    "name" : "zipcode",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "zipcode",
+    "sqlType" : "12"
+  }, {
+    "name" : "country",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "country",
+    "sqlType" : "12"
+  }, {
+    "name" : "timezone",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "timezone",
+    "sqlType" : "12"
+  }, {
+    "name" : "airport_code",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "airport_code",
+    "sqlType" : "12"
+  }, {
+    "name" : "weather_timestamp",
+    "type" : [ "null", "long" ],
+    "default" : null,
+    "columnName" : "weather_timestamp",
+    "sqlType" : "93"
+  }, {
+    "name" : "temperature_f",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "temperature_f",
+    "sqlType" : "8"
+  }, {
+    "name" : "wind_chill_f",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "wind_chill_f",
+    "sqlType" : "8"
+  }, {
+    "name" : "humidity_pct",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "humidity_pct",
+    "sqlType" : "8"
+  }, {
+    "name" : "pressure_in",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "pressure_in",
+    "sqlType" : "8"
+  }, {
+    "name" : "visibility_mi",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "visibility_mi",
+    "sqlType" : "8"
+  }, {
+    "name" : "wind_direction",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "wind_direction",
+    "sqlType" : "12"
+  }, {
+    "name" : "wind_speed_mph",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "wind_speed_mph",
+    "sqlType" : "8"
+  }, {
+    "name" : "precipitation_in",
+    "type" : [ "null", "double" ],
+    "default" : null,
+    "columnName" : "precipitation_in",
+    "sqlType" : "8"
+  }, {
+    "name" : "weather_condition",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "weather_condition",
+    "sqlType" : "12"
+  }, {
+    "name" : "amenity",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "amenity",
+    "sqlType" : "-7"
+  }, {
+    "name" : "bump",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "bump",
+    "sqlType" : "-7"
+  }, {
+    "name" : "crossing",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "crossing",
+    "sqlType" : "-7"
+  }, {
+    "name" : "give_way",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "give_way",
+    "sqlType" : "-7"
+  }, {
+    "name" : "junction",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "junction",
+    "sqlType" : "-7"
+  }, {
+    "name" : "no_exit",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "no_exit",
+    "sqlType" : "-7"
+  }, {
+    "name" : "railway",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "railway",
+    "sqlType" : "-7"
+  }, {
+    "name" : "roundabout",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "roundabout",
+    "sqlType" : "-7"
+  }, {
+    "name" : "station",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "station",
+    "sqlType" : "-7"
+  }, {
+    "name" : "stop",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "stop",
+    "sqlType" : "-7"
+  }, {
+    "name" : "traffic_calming",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "traffic_calming",
+    "sqlType" : "-7"
+  }, {
+    "name" : "traffic_signal",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "traffic_signal",
+    "sqlType" : "-7"
+  }, {
+    "name" : "turning_loop",
+    "type" : [ "null", "boolean" ],
+    "default" : null,
+    "columnName" : "turning_loop",
+    "sqlType" : "-7"
+  }, {
+    "name" : "sunrise_sunset",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "sunrise_sunset",
+    "sqlType" : "12"
+  }, {
+    "name" : "civil_twilight",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "civil_twilight",
+    "sqlType" : "12"
+  }, {
+    "name" : "nautical_twilight",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "nautical_twilight",
+    "sqlType" : "12"
+  }, {
+    "name" : "astronomical_twilight",
+    "type" : [ "null", "string" ],
+    "default" : null,
+    "columnName" : "astronomical_twilight",
+    "sqlType" : "12"
+  } ],
+  "tableName" : "us_accidents"
+}

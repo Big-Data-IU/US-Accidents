@@ -1,0 +1,16 @@
+q6_out.weather_condition,q6_out.accident_count,q6_out.high_severity_pct
+Fair,2560801,11.71
+Mostly Cloudy,1016195,20.94
+Cloudy,817082,14.22
+Clear,808743,33.56
+Partly Cloudy,698972,20.51
+Overcast,382866,34.95
+Light Rain,352956,22.80
+Scattered Clouds,204829,35.16
+Light Snow,128680,20.90
+Fog,99238,12.46
+Rain,84331,24.02
+Haze,76223,20.20
+Fair / Windy,35671,12.53
+Heavy Rain,32309,24.71
+Light Drizzle,22684,24.23

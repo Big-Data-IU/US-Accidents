@@ -1,0 +1,6 @@
+q3_out.bucket,q3_out.accident_count,q3_out.high_severity_pct
+1: 0-1 mi (Near Zero),117131,17.58
+2: 1-3 mi (Low),269487,20.91
+3: 3-7 mi (Moderate),508071,21.02
+4: 7-10 mi (Good),555531,20.04
+5: 10+ mi (Clear),6101074,19.19

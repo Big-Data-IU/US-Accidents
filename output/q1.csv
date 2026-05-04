@@ -1,0 +1,13 @@
+q1_out.road_feature,q1_out.accident_count,q1_out.high_severity_pct
+traffic_signal,1143772,9.51
+crossing,873763,7.04
+junction,571342,26.79
+stop,214371,6.22
+station,201901,7.51
+amenity,96334,6.29
+railway,66979,15.13
+give_way,36582,16.16
+no_exit,19545,11.28
+traffic_calming,7598,12.52
+bump,3514,9.56
+roundabout,249,4.42
