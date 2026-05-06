@@ -1,40 +1,32 @@
 #!/usr/bin/env python3
-"""Stage III: multiclass severity prediction from Hive ORC table (Yarn + Spark ML).
-
-Run on the cluster (not via plain python3):
-  spark-submit --master yarn scripts/train_ml.py
-
-Reads ``team31_projectdb.us_accidents_part_buck`` by default (override with env vars).
-"""
-
-from __future__ import annotations
+"""Stage III: multiclass severity prediction from Hive ORC table (Yarn + Spark ML)."""
 
 import os
 import sys
 from pathlib import Path
+from typing import List
 
-# Allow ``from ml.transformers import ...`` when executing ``scripts/train_ml.py``.
 _SCRIPTS_ROOT = Path(__file__).resolve().parent
 if str(_SCRIPTS_ROOT) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS_ROOT))
 
 from ml.transformers import CyclicalTimestampTransformer, LatLngToEcefTransformer  # noqa: E402
 
-from pyspark import StorageLevel  # pylint: disable=import-error
-from pyspark.ml import Pipeline  # pylint: disable=import-error
-from pyspark.ml.classification import (  # pylint: disable=import-error
+from pyspark import StorageLevel  
+from pyspark.ml import Pipeline  
+from pyspark.ml.classification import (  
     LogisticRegression,
     RandomForestClassifier,
 )
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator  # pylint: disable=import-error
-from pyspark.ml.feature import (  # pylint: disable=import-error
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator  
+from pyspark.ml.feature import (  
     StandardScaler,
     StringIndexer,
     VectorAssembler,
 )
-from pyspark.ml.tuning import CrossValidator, ParamGridBuilder  # pylint: disable=import-error
-from pyspark.sql import SparkSession  # pylint: disable=import-error
-from pyspark.sql import functions as F  # pylint: disable=import-error
+from pyspark.ml.tuning import CrossValidator, ParamGridBuilder  
+from pyspark.sql import SparkSession  
+from pyspark.sql import functions as F  
 
 
 BOOL_FEATURES = [
@@ -158,7 +150,7 @@ def _prepare_frame(spark: SparkSession, db: str, table: str):
     return df, cats, nums, bools
 
 
-def _feature_pipeline(indexed_cols: list[str], nums: list[str], bools: list[str]) -> Pipeline:
+def _feature_pipeline(indexed_cols: List[str], nums: List[str], bools: List[str]) -> Pipeline:
     """Featurisation only (cyclical time, ECEF, categoricals, scaling)."""
     cyclical = CyclicalTimestampTransformer(inputCol="start_time")
     ecef = LatLngToEcefTransformer(latCol="start_lat", lngCol="start_lng")
@@ -178,7 +170,7 @@ def _feature_pipeline(indexed_cols: list[str], nums: list[str], bools: list[str]
     return Pipeline(stages=[cyclical, ecef] + indexers + [assembler, scaler])
 
 
-def _full_pipeline_classifier(classifier_stage, indexed_cols: list[str], nums: list[str], bools: list[str]):
+def _full_pipeline_classifier(classifier_stage, indexed_cols: List[str], nums: List[str], bools: List[str]):
     feat_pipe = _feature_pipeline(indexed_cols, nums, bools)
     stages = list(feat_pipe.getStages()) + [classifier_stage]
     return Pipeline(stages=stages)
@@ -220,7 +212,7 @@ def main() -> None:
         metricName="f1",
     )
 
-    # --- Model 1: RandomForest (full Pipeline inside CV folds) ---
+    # Model 1: RandomForest
     rf_base = RandomForestClassifier(
         labelCol="label",
         featuresCol="scaledFeatures",
@@ -265,7 +257,7 @@ def main() -> None:
 
     rf_acc, rf_f1 = _evaluate(best_rf_model.transform(test_df))
 
-    # --- Model 2: multinomial Logistic Regression ---
+    # Model 2: multinomial Logistic Regression
     lr_base = LogisticRegression(
         family="multinomial",
         labelCol="label",

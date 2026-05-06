@@ -1,6 +1,4 @@
-"""Custom Spark ML transformers for cyclical time encoding and lat/lng → ECEF."""
-
-from __future__ import annotations
+"""Custom Spark ML transformers."""
 
 import math
 

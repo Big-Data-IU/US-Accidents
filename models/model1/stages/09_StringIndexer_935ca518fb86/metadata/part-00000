@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1777910370756,"sparkVersion":"3.2.4","uid":"StringIndexer_935ca518fb86","paramMap":{"handleInvalid":"keep","outputCol":"nautical_twilight_idx","inputCol":"nautical_twilight"},"defaultParamMap":{"handleInvalid":"error","outputCol":"StringIndexer_935ca518fb86__output","stringOrderType":"frequencyDesc"}}

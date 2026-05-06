@@ -217,4 +217,8 @@ data/*.csv
 output/*.avsc
 output/*.java
 
+# Stage III: too large for GitHub (100 MB/file limit); reproduce via stage3.sh on cluster
+data/train.json
+data/test.json
+
 ml_transformers.zip

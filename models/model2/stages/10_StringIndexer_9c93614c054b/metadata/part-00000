@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1777914207294,"sparkVersion":"3.2.4","uid":"StringIndexer_9c93614c054b","paramMap":{"inputCol":"astronomical_twilight","handleInvalid":"keep","outputCol":"astronomical_twilight_idx"},"defaultParamMap":{"handleInvalid":"error","stringOrderType":"frequencyDesc","outputCol":"StringIndexer_9c93614c054b__output"}}

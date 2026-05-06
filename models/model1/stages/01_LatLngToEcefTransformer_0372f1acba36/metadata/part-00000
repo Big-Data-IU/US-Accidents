@@ -1,0 +1,1 @@
+{"class":"ml.transformers.LatLngToEcefTransformer","timestamp":1777910365487,"sparkVersion":"3.2.4","uid":"LatLngToEcefTransformer_0372f1acba36","paramMap":{"latCol":"start_lat","lngCol":"start_lng"},"defaultParamMap":{"latCol":"start_lat","lngCol":"start_lng"}}

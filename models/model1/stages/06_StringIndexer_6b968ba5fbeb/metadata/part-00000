@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1777910369863,"sparkVersion":"3.2.4","uid":"StringIndexer_6b968ba5fbeb","paramMap":{"handleInvalid":"keep","outputCol":"weather_condition_idx","inputCol":"weather_condition"},"defaultParamMap":{"handleInvalid":"error","stringOrderType":"frequencyDesc","outputCol":"StringIndexer_6b968ba5fbeb__output"}}
