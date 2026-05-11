@@ -15,13 +15,13 @@ class CyclicalTimestampTransformer(
     DefaultParamsReadable,
     DefaultParamsWritable,
     HasInputCol,
-):  # pylint: disable=too-few-public-methods
+):  # pylint: disable=too-few-public-methods,too-many-ancestors
     """Expand a timestamp column into year + sin/cos pairs for month, day-of-month, hour."""
 
     @keyword_only
     def __init__(self, inputCol="start_time"):  # pylint: disable=invalid-name
         super().__init__()
-        kwargs = self._input_kwargs
+        kwargs = self._input_kwargs  # pylint: disable=no-member
         self._setDefault(inputCol=inputCol)
         self._set(**kwargs)
 
@@ -65,7 +65,7 @@ class LatLngToEcefTransformer(  # pylint: disable=invalid-name,too-few-public-me
     @keyword_only
     def __init__(self, latCol="start_lat", lngCol="start_lng"):  # pylint: disable=invalid-name
         super().__init__()
-        kwargs = self._input_kwargs
+        kwargs = self._input_kwargs  # pylint: disable=no-member
         self._setDefault(latCol=latCol, lngCol=lngCol)
         self._set(**kwargs)
 

@@ -110,9 +110,9 @@ def _spark_session() -> SparkSession:
 def _prepare_frame(spark: SparkSession, db: str, table: str):
     """Load Hive table and apply lightweight cleaning (no fitted estimators yet)."""
     full_name = f"{db}.{table}"
-    df = spark.table(full_name)
+    frame = spark.table(full_name)
 
-    existing_cols = set(df.columns)
+    existing_cols = set(frame.columns)
     cats = [c for c in CAT_FEATURES if c in existing_cols]
     nums = [c for c in NUM_FEATURES if c in existing_cols]
     bools = [c for c in BOOL_FEATURES if c in existing_cols]
@@ -123,28 +123,28 @@ def _prepare_frame(spark: SparkSession, db: str, table: str):
         raise ValueError(f"Hive table {full_name} missing columns: {sorted(missing)}")
 
     selected = ["severity", "start_time", "start_lat", "start_lng"] + cats + nums + bools
-    df = df.select(*selected)
+    frame = frame.select(*selected)
 
-    df = df.filter(F.col("severity").isNotNull())
-    df = df.filter(F.col("start_time").isNotNull())
-    df = df.filter(F.col("start_lat").isNotNull())
-    df = df.filter(F.col("start_lng").isNotNull())
-    df = df.filter(F.col("severity").between(1, 4))
+    frame = frame.filter(F.col("severity").isNotNull())
+    frame = frame.filter(F.col("start_time").isNotNull())
+    frame = frame.filter(F.col("start_lat").isNotNull())
+    frame = frame.filter(F.col("start_lng").isNotNull())
+    frame = frame.filter(F.col("severity").between(1, 4))
 
     for name in cats:
-        df = df.withColumn(name, F.coalesce(F.col(name), F.lit("unknown")))
+        frame = frame.withColumn(name, F.coalesce(F.col(name), F.lit("unknown")))
     if nums:
-        df = df.na.fill(0.0, subset=nums)
+        frame = frame.na.fill(0.0, subset=nums)
     for name in bools:
-        df = df.withColumn(name, F.coalesce(F.col(name), F.lit(False)))
+        frame = frame.withColumn(name, F.coalesce(F.col(name), F.lit(False)))
 
     for name in bools:
-        df = df.withColumn(name, F.col(name).cast("double"))
+        frame = frame.withColumn(name, F.col(name).cast("double"))
 
-    df = df.withColumn("label", F.col("severity").cast("double") - F.lit(1.0))
+    frame = frame.withColumn("label", F.col("severity").cast("double") - F.lit(1.0))
 
     cast_nums = [F.col(c).cast("double").alias(c) for c in nums]
-    df = df.select(
+    frame = frame.select(
         *[F.col(c) for c in cats],
         *cast_nums,
         *[F.col(c) for c in bools],
@@ -154,7 +154,7 @@ def _prepare_frame(spark: SparkSession, db: str, table: str):
         F.col("start_lat"),
         F.col("start_lng"),
     )
-    return df, cats, nums, bools
+    return frame, cats, nums, bools
 
 
 def _feature_pipeline(indexed_cols: List[str], nums: List[str], bools: List[str]) -> Pipeline:
