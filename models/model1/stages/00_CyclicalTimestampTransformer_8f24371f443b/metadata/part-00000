@@ -1,0 +1,1 @@
+{"class":"ml.transformers.CyclicalTimestampTransformer","timestamp":1778448494643,"sparkVersion":"3.2.4","uid":"CyclicalTimestampTransformer_8f24371f443b","paramMap":{"inputCol":"start_time"},"defaultParamMap":{"inputCol":"start_time"}}

@@ -212,13 +212,10 @@ cython_debug/
 # HTML
 *.html
 
-# Project data artifacts
-data/*.csv
+# Project data (CSVs, train/test JSON, HDFS .crc, etc. — keep locally or on cluster, not in git)
+/data/
+
 output/*.avsc
 output/*.java
-
-# Stage III: too large for GitHub (100 MB/file limit); reproduce via stage3.sh on cluster
-data/train.json
-data/test.json
 
 ml_transformers.zip
