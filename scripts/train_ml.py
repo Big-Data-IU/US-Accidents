@@ -107,9 +107,9 @@ def _spark_session() -> SparkSession:
     )
 
 
-def _prepare_frame(spark: SparkSession, db: str, table: str):
+def _prepare_frame(spark: SparkSession, database_name: str, table_name: str):
     """Load Hive table and apply lightweight cleaning (no fitted estimators yet)."""
-    full_name = f"{db}.{table}"
+    full_name = f"{database_name}.{table_name}"
     frame = spark.table(full_name)
 
     existing_cols = set(frame.columns)
