@@ -58,9 +58,6 @@ echo "==> Verifying partitioned table"
 beeline -u "${BEELINE_URL}" -n "team31" -p "${HIVE_PASSWORD}" \
   -e "SELECT state, COUNT(*) FROM ${HIVE_DB_NAME}.us_accidents_part_buck GROUP BY state LIMIT 5;"
 
-echo "==> Dropping unpartitioned external table"
-run_hql hive/drop_unpartitioned.hql
-
 echo "==> EDA Q1: Road feature impact on accidents"
 run_hql hive/q1.hql
 export_csv q1_out output/q1.csv
@@ -88,5 +85,8 @@ export_csv q6_out output/q6.csv
 echo "==> EDA Q7: Severity distribution"
 run_hql hive/q7.hql
 export_csv q7_out output/q7.csv
+
+echo "==> Dropping unpartitioned external table"
+run_hql hive/drop_unpartitioned.hql
 
 echo "Stage 2 complete. CSV results are in output/."
