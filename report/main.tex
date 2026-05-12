@@ -502,12 +502,11 @@ In this project, we successfully developed and deployed an end-to-end Big Data p
 \subsection*{Challenges and difficulties}
 During the development process, we faced several difficulties:
 \begin{itemize}
-    \item Memory Management
     \item Data Imbalance
     \item Working in cluster in the first time
     \item Superset is not intuitively understandable
     \item Cluster is down several times
-    \item Cluster timezone being set to UTC messing with the timestamps in the ingested data
+    \item Cluster ingested timezones incorrectly the first time, had to specify timezone in Hive
 \end{itemize}
 
 \subsection*{Recommendations}
