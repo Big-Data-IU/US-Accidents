@@ -178,30 +178,26 @@ The project consists of four main stages:
   
 
 1. Clone the repository:
-
-   ```
+```
 
    git clone https://github.com/Big-Data-IU/US-Accidents
 
    cd US-Accidents
-
-   ```
+```
 
   
 
 2. Install Python dependencies:
 
-   ```
-
+```
    pip install -r requirements.txt
-
-   ```
+```
 
   
 
 3. Set up Kaggle credentials for dataset download:
 
-   ```
+```
 
    # Place kaggle.json in ~/.kaggle/ or set environment variables
 
@@ -209,7 +205,7 @@ The project consists of four main stages:
 
    export KAGGLE_KEY=your_key
 
-   ```
+```
   
 
 4. Configure environment variables for Hive and HDFS access (see scripts for details)
