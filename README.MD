@@ -179,7 +179,7 @@ The project consists of four main stages:
 
 1. Clone the repository:
 
-   ```bash
+   ```
 
    git clone https://github.com/Big-Data-IU/US-Accidents
 
@@ -191,7 +191,7 @@ The project consists of four main stages:
 
 2. Install Python dependencies:
 
-   ```bash
+   ```
 
    pip install -r requirements.txt
 
@@ -201,7 +201,7 @@ The project consists of four main stages:
 
 3. Set up Kaggle credentials for dataset download:
 
-   ```bash
+   ```
 
    # Place kaggle.json in ~/.kaggle/ or set environment variables
 
